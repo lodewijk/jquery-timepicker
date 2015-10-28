@@ -5,7 +5,7 @@
 
   <title>Timepicker for jQuery &ndash; Demos and Documentation</title>
   <meta name="description" content="A lightweight, customizable jQuery timepicker plugin inspired by Google Calendar. Add a user-friendly javascript timepicker dropdown to your app in minutes." />
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <script type="text/javascript" src="jquery.timepicker.js"></script>
   <link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
@@ -35,7 +35,7 @@
     </header>
 
     <section>
-        <p class="body-text">Use this plugin to unobtrusively add a timepicker dropdown to your forms. It's lightweight (2.5kb minified and gzipped) and easy to customize.</p>
+        <p class="body-text">Use this plugin to unobtrusively add a timepicker dropdown to your forms. It's lightweight (2.7kb minified and gzipped) and easy to customize.</p>
     </section>
 
     <section id="examples">
@@ -59,16 +59,16 @@
             <div class="demo">
                 <h2>Scroll Default Example</h2>
                 <p>Set the scroll position to local time if no value selected.</p>
-                <p><input id="defaultValueExample" type="text" class="time" /></p>
+                <p><input id="scrollDefaultExample" type="text" class="time" /></p>
             </div>
 
             <script>
                 $(function() {
-                    $('#defaultValueExample').timepicker({ 'scrollDefaultNow': true });
+                    $('#scrollDefaultExample').timepicker({ 'scrollDefault': 'now' });
                 });
             </script>
 
-            <pre class="code" data-language="javascript">$('#defaultValueExample').timepicker({ 'scrollDefaultNow': true });</pre>
+            <pre class="code" data-language="javascript">$('#scrollDefaultExample').timepicker({ 'scrollDefault': 'now' });</pre>
         </article>
 
         <article>
@@ -105,7 +105,11 @@ $('#setTimeButton').on('click', function (){
 
             <script>
                 $(function() {
-                    $('#durationExample').timepicker({ 'minTime': '2:00pm', 'maxTime': '11:30pm', 'showDuration': true });
+                    $('#durationExample').timepicker({
+                        'minTime': '2:00pm',
+                        'maxTime': '11:30pm',
+                        'showDuration': true
+                    });
                 });
             </script>
 
@@ -226,12 +230,20 @@ $('#timeformatExample2').timepicker({ 'timeFormat': 'h:i A' });</pre>
             <script>
                 $(function() {
                     $('#stepExample1').timepicker({ 'step': 15 });
-                    $('#stepExample2').timepicker({ 'step': 60 });
+                    $('#stepExample2').timepicker({
+                        'step': function(i) {
+                            return (i%2) ? 15 : 45;
+                        }
+                    });
                 });
             </script>
 
             <pre class="code" data-language="javascript">$('#stepExample1').timepicker({ 'step': 15 });
-$('#stepExample2').timepicker({ 'step': 60 });</pre>
+$('#stepExample2').timepicker({
+    'step': function(i) {
+        return (i%2) ? 15 : 45;
+    }
+});</pre>
         </article>
 
         <article>
@@ -301,7 +313,7 @@ $('#selectButton').click(function(e) {
             <div class="demo">
                 <h2>Datepair Plugin Example</h2>
 
-                <p>jquery-timepicker is designed to work with the <a href="http://jonthornton.github.com/jquery-datepair">jquery-datepair plugin</a>.
+                <p>jquery-timepicker is designed to work with the <a href="http://jonthornton.github.com/Datepair.js">jquery-datepair plugin</a>.
 
                 <p id="datepairExample">
                     <input type="text" class="date start" />
@@ -311,7 +323,8 @@ $('#selectButton').click(function(e) {
                 </p>
             </div>
 
-            <script src="http://jonthornton.github.io/jquery-datepair/jquery.datepair.js"></script>
+            <script src="http://jonthornton.github.io/Datepair.js/dist/datepair.js"></script>
+            <script src="http://jonthornton.github.io/Datepair.js/dist/jquery.datepair.js"></script>
             <script>
                 $('#datepairExample .time').timepicker({
                     'showDuration': true,
@@ -334,6 +347,7 @@ $('#selectButton').click(function(e) {
     &lt;input type="text" class="date end" /&gt;
 &lt;/p&gt;
 
+&lt;script type="text/javascript" src="datepair.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="jquery.datepair.js"&gt;&lt;/script&gt;
 &lt;script&gt;
     // initialize input widgets first
@@ -356,7 +370,7 @@ $('#selectButton').click(function(e) {
 
     <section>
         <h2>Need Help?</h2>
-        <p>Check <a href="https://github.com/jonthornton/jquery-timepicker#timepicker-plugin-for-jquery">the documenation</a> or <a href="https://github.com/jonthornton/jquery-timepicker/issues?state=open">submit an issue</a> on GitHub.</p>
+        <p>Check <a href="https://github.com/jonthornton/jquery-timepicker#timepicker-plugin-for-jquery">the documentation</a> or <a href="https://github.com/jonthornton/jquery-timepicker/issues?state=open">submit an issue</a> on GitHub.</p>
     </section>
 
     <footer>
